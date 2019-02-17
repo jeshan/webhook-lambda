@@ -8,6 +8,9 @@ There are 3 required parameters:
 2. Header name. This is the header that is sent by the provider to identify themselves.
 3. Token. This is a secret token that you can enter on the provider side to validate that it's actually being sent from them.
 
+Command format:
+
+`aws cloudformation deploy --template-file templates/template.yaml --stack-name STACK_NAME --parameters ...`
 
 ## Gitlab Example
 Go to Settings > Integrations.
