@@ -1,0 +1,5 @@
+template_path: template.yaml
+
+# Fill required parameters
+parameters:
+  HeaderName: X-Gitlab-Token
