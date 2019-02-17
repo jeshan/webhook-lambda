@@ -75,13 +75,25 @@ Resources:
       PathPart: '{proxy+}'
       ParentId: !Sub '${Api.RootResourceId}'
 
-  Method:
+  Method2:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: ANY
       RestApiId: !Ref Api
       AuthorizationType: NONE
       ResourceId: !Ref Post
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${Fn.Arn}/invocations"
+
+  Method1:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: ANY
+      RestApiId: !Ref Api
+      AuthorizationType: NONE
+      ResourceId: !Sub '${Api.RootResourceId}'
       Integration:
         Type: AWS_PROXY
         IntegrationHttpMethod: POST
@@ -96,7 +108,7 @@ Resources:
 
   Deploy:
     Type: AWS::ApiGateway::Deployment
-    DependsOn: Method
+    DependsOn: [Method1, Method2]
     Properties:
       RestApiId: !Ref Api
 
