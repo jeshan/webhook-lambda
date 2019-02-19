@@ -115,4 +115,4 @@ Resources:
 Outputs:
   ApiInvokeUrl:
     Description: Endpoint of the API
-    Value: !Sub 'https://${Api}.execute-api.${AWS::Region}.amazonaws.com/prod'
+    Value: !Sub 'https://${Api}.execute-api.${AWS::Region}.amazonaws.com'
